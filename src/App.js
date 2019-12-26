@@ -1,23 +1,36 @@
 import React from "react";
 import "./App.css";
-import axios from "axios";
+import { connect } from "react-redux";
+import { DisplaySong } from "./Middleware/Actions";
+
 class App extends React.Component {
 	state = {
-		data: "Hardik"
+		data: "Hardik",
+		song: ""
 	};
 	componentDidMount() {
-		axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
-			this.setState({
-				data: res.data.length
-			});
-			console.log(res);
-		});
+		console.log("Component did mount called");
+		this.props.getSongName("JA-JA-JA");
 	}
+	componentDidUpdate(prevProps, prevState) {
+		console.log(
+			"Updation >>> ",
+			"prevProps >>>",
+			prevProps.songname,
+			"prevState >>>",
+			prevState,
+			"this.props >>>>",
+			this.props.songname
+		);
+		if (prevProps.songname !== this.props.songname) {
+			this.setState({
+				song: this.props.songname
+			});
+		}
+	}
+
 	render() {
-		let array = [1, 2, 3, 4, 5];
-		console.log(array);
-		var newarray = array[6];
-		console.log(newarray);
+		console.log("Render Called", this.props.songname, "state", this.state);
 		return (
 			<div>
 				<div className="Header">
@@ -37,8 +50,12 @@ class App extends React.Component {
 				</div>
 				<div className="BodyContainer">
 					<div className="BodyContainer-main">
-						<div className="body-Image-div"></div>
-						<div className="body-midcontent-div"> </div>
+						<div className="body-Image-div">
+							<button>Invoke Action</button>
+						</div>
+						<div className="body-midcontent-div">
+							{this.props.songname}
+						</div>
 						<div className="body-midcontent-div"></div>
 					</div>
 					<div className="side-Container">
@@ -51,7 +68,19 @@ class App extends React.Component {
 		);
 	}
 }
-export default App;
+
+const mapStateToProps = state => {
+	console.log("state", state);
+	return {
+		songname: state.StartReducer.songname
+	};
+};
+const mapDispatchToProps = dispatch => {
+	return {
+		getSongName: song => dispatch(DisplaySong(song))
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 //ROuter
 

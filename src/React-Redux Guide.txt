@@ -1,0 +1,11 @@
+Notes for React-Redux
+
+React-Redux is used to connect react with redux
+
+Provider and connect are components of react-redux we pass props to them
+
+connect component is special component connects with the provider tag , it communicates with the provider with (  context  )  system
+
+context system = Allows any parent component to communicate  to child component even if there are other components in between them
+
+provider = Any app in our component gets access to store 

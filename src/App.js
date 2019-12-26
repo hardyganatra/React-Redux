@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import { connect } from "react-redux";
-import { DisplaySong } from "./Middleware/Actions";
+import { DisplaySong, getUsersAction } from "./Middleware/Actions";
+// import axios from "axios";
 
 class App extends React.Component {
 	state = {
@@ -11,6 +12,11 @@ class App extends React.Component {
 	componentDidMount() {
 		console.log("Component did mount called");
 		this.props.getSongName("JA-JA-JA");
+		this.props.getUserdata();
+		//getUserdata
+		// axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+		// 	console.log("res", res);
+		// });
 	}
 	componentDidUpdate(prevProps, prevState) {
 		console.log(
@@ -72,12 +78,17 @@ class App extends React.Component {
 const mapStateToProps = state => {
 	console.log("state", state);
 	return {
-		songname: state.StartReducer.songname
+		songname: state.StartReducer.songname,
+		songlist: state.ExtraReducer.songe,
+		userlist: state.ExtraReducer.users
+		//users
 	};
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		getSongName: song => dispatch(DisplaySong(song))
+		getSongName: song => dispatch(DisplaySong(song)),
+		getUserdata: () => dispatch(getUsersAction())
+		//getUsersAction
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

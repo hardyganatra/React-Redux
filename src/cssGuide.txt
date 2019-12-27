@@ -1,0 +1,58 @@
+percentages is only with respect to parent width if specified
+for images to be responsive we need to set the width of them and always remember percentages are rel to parent
+
+min-width  = agar screen size bada kiya to bi vo ekdam bada nahi ho jayega
+max-width  = agar screen size chota kiya to usse chota vo nahi hoga
+
+css units 
+em  = relative to parent font size 
+ 1em = same as parent; ( jidar font size mention kiya hai nai kiya to default browser ka 16px)
+ this is useful say body ko 20 px diya aur kidar to h1 ko 0.5em kiya to h1 = (0.5 * 20 = 10) but it has cascading affect say h1 = 1.5em and  ukk upar div hai jo hai 1.5em to yaha pe cascading hoga
+
+rem = relative to root-element i-e html
+html{
+    font-size = 10px
+}
+any element with 2rem will have font size of 20px no cascading involved
+
+Rule to be generally used 
+font-size = rem 
+padding and margin = em;
+widths = em or perc
+
+Media Queries
+    min-width = x pixels and above
+    max-width = 0 to that pixels
+basic Syntax = 
+@media (){....}
+1) @media media-type and (media-features){....}
+        media type lets us target different types of media
+        1 ) Screen => @media screen {}
+        2 ) print
+        3) Speech
+2) @media (condition)
+        1) @media(min-width : 600px){}
+        2) @media(orientation : landscape){}
+
+
+@media (min-width: 650px) and (max-width: 800px) {
+	body {
+		background-color: rgb(199, 53, 175);
+	}
+}
+landscape = something is wider than it is tall
+potrait = something is taller than its wide
+
+
+Flexbox changing axis background
+
+Tip for media queries = always use a media query after its defaukt styling is done or may be in last of css file
+
+Adobe link
+https://xd.adobe.com/spec/75d448ea-569a-4b7e-721b-9bbd3b2b97b9-03e5/screen/004da6d6-1656-4b50-8b4f-f020913d5c30/Simple-life-recent-posts-with-navigation
+
+
+
+
+
+

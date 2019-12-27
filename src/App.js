@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import { DisplaySong, getUsersAction } from "./Middleware/Actions";
+import Userdata from "./Components/UserDetail";
 // import axios from "axios";
 
 class App extends React.Component {
@@ -34,9 +35,25 @@ class App extends React.Component {
 			});
 		}
 	}
-
+	// rederlist = () => {
+	// 	this.props.userlist.map(data => {
+	// 		return <div>{`${data.name}` - `${data.username}`}</div>;
+	// 	});
+	// };
+	rederlist = () => {
+		return this.props.userlist.map(user => {
+			return (
+				<div style={{ border: "1px solid red" }}>
+					<span>{user.name}</span>
+					<Userdata userid={user.id}></Userdata>
+				</div>
+			);
+		});
+	};
 	render() {
 		console.log("Render Called", this.props.songname, "state", this.state);
+		console.log("listttttttttt", this.props.userlist);
+
 		return (
 			<div>
 				<div className="Header">
@@ -56,12 +73,8 @@ class App extends React.Component {
 				</div>
 				<div className="BodyContainer">
 					<div className="BodyContainer-main">
-						<div className="body-Image-div">
-							<button>Invoke Action</button>
-						</div>
-						<div className="body-midcontent-div">
-							{this.props.songname}
-						</div>
+						<div className="body-Image-div">{this.rederlist()}</div>
+						<div className="body-midcontent-div"></div>
 						<div className="body-midcontent-div"></div>
 					</div>
 					<div className="side-Container">

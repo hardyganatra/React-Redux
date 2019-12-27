@@ -18,6 +18,17 @@ export const getUsersAction = (headers, params) => {
 	};
 };
 
+// export const getUserdata = (headers, params) => {
+// 	return dispatch => {
+// 		axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+// 			dispatch({ type: "GET_USERS", payload: res.data });
+// 		});
+// 		// .catch(error => {
+// 		// 	dispatch({ type: GET_USERS_ERROR, payload: error });
+// 		// });
+// 	};
+// };
+
 ////////////////////////////////////////////////////////
 // export const getDoorHealthDataAction = (headers, params) => {
 // 	return dispatch => {

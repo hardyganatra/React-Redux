@@ -43,9 +43,9 @@ class App extends React.Component {
 	rederlist = () => {
 		return this.props.userlist.map(user => {
 			return (
-				<div style={{ border: "1px solid red" }}>
+				<div key={user.id} style={{ border: "1px solid red" }}>
 					<span>{user.name}</span>
-					<Userdata userid={user.id}></Userdata>
+					<Userdata userid={user.userId}></Userdata>
 				</div>
 			);
 		});

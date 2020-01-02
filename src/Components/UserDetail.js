@@ -1,8 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getUserBasedonIdAction } from "../Middleware/Actions";
+//getUserBasedonIdAction
 
 class Userdata extends React.Component {
 	Userdatfunc = () => {
+		this.props.getuserbasedonid(this.props.userid);
 		return <div>{this.props.userid}</div>;
 	};
 	render() {
@@ -17,7 +20,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-		//getUsersAction
+		getuserbasedonid: id => dispatch(getUserBasedonIdAction(id))
 	};
 };
 

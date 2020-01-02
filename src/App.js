@@ -44,7 +44,7 @@ class App extends React.Component {
 		return this.props.userlist.map(user => {
 			return (
 				<div key={user.id} style={{ border: "1px solid red" }}>
-					<span>{user.name}</span>
+					<span>{user.title}</span>
 					<Userdata userid={user.userId}></Userdata>
 				</div>
 			);

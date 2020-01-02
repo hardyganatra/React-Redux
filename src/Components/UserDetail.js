@@ -4,11 +4,26 @@ import { getUserBasedonIdAction } from "../Middleware/Actions";
 //getUserBasedonIdAction
 
 class Userdata extends React.Component {
+
+
+    componentDidMount() {
+        this.props.getuserbasedonid(this.props.userid)
+    }
+    
 	Userdatfunc = () => {
-		this.props.getuserbasedonid(this.props.userid);
-		return <div>{this.props.userid}</div>;
+        const user = this.props.getUsersBasedonID.find(user=>user.id === this.props.userid)
+        if(user){
+            return <div>{user.name}</div>
+        }
+        else
+		return (
+			<div>
+            ...loading
+			</div>
+		);
 	};
 	render() {
+        
 		{
 			return this.Userdatfunc();
 		}
@@ -16,7 +31,9 @@ class Userdata extends React.Component {
 }
 
 const mapStateToProps = state => {
-	return {};
+	return {
+		getUsersBasedonID: state.ExtraReducer.userArray
+	};
 };
 const mapDispatchToProps = dispatch => {
 	return {

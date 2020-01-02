@@ -42,7 +42,7 @@ nav li {
 }
 .BodyContainer-main {
 	width: 70%;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 .side-Container {
 	width: 30%;
@@ -57,12 +57,12 @@ nav li {
 }
 .body-Image-div {
 	margin: 1em;
-	height: 40%;
+
 	border: 1px solid purple;
 }
 .body-midcontent-div {
 	margin: 1em;
-	height: 20%;
+	/* height: 20%; */
 	border: 1px solid royalblue;
 }
 .footer {

@@ -9,7 +9,7 @@ export const DisplaySong = name => {
 
 export const getUsersAction = (headers, params) => {
 	return dispatch => {
-		axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+		axios.get("https://jsonplaceholder.typicode.com/posts").then(res => {
 			dispatch({ type: "GET_USERS", payload: res.data });
 		});
 		// .catch(error => {
@@ -17,6 +17,32 @@ export const getUsersAction = (headers, params) => {
 		// });
 	};
 };
+//getUserBasedonIdAction
+export const getUserBasedonIdAction = id => {
+	return dispatch => {
+		axios
+			.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+			.then(res => {
+				dispatch({ type: "GET_USERS_BasedOnId", payload: res.data });
+			});
+		// console.log("UserBasedOnID === " ,res)
+
+		// .catch(error => {
+		// 	dispatch({ type: GET_USERS_ERROR, payload: error });
+		// });
+	};
+};
+
+// export const getUserdata = (headers, params) => {
+// 	return dispatch => {
+// 		axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+// 			dispatch({ type: "GET_USERS", payload: res.data });
+// 		});
+// 		// .catch(error => {
+// 		// 	dispatch({ type: GET_USERS_ERROR, payload: error });
+// 		// });
+// 	};
+// };
 
 ////////////////////////////////////////////////////////
 // export const getDoorHealthDataAction = (headers, params) => {

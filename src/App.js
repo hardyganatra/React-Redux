@@ -1,8 +1,14 @@
 import React from "react";
+import _ from "lodash";
 import "./App.css";
 import { connect } from "react-redux";
-import { DisplaySong, getUsersAction } from "./Middleware/Actions";
+import {
+	DisplaySong,
+	getUsersAction,
+	getUserBasedonIdAction
+} from "./Middleware/Actions";
 import Userdata from "./Components/UserDetail";
+// /uniqcalls
 // import axios from "axios";
 
 class App extends React.Component {
@@ -14,10 +20,7 @@ class App extends React.Component {
 		console.log("Component did mount called");
 		this.props.getSongName("JA-JA-JA");
 		this.props.getUserdata();
-		//getUserdata
-		// axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
-		// 	console.log("res", res);
-		// });
+		//this.props.multpleApicalls();
 	}
 	componentDidUpdate(prevProps, prevState) {
 		console.log(
@@ -33,6 +36,18 @@ class App extends React.Component {
 			this.setState({
 				song: this.props.songname
 			});
+		} else if (prevProps.userlist !== this.props.userlist) {
+			// const userIds = _.uniq(_.map(this.props.userlist, "userId"));
+			// userIds.forEach(u => {
+			// 	this.props.getuser(u);
+			// });
+			_.chain(this.props.userlist)
+				.map("userId")
+				.uniq()
+				.forEach(id => {
+					this.props.getuser(id);
+				})
+				.value();
 		}
 	}
 	// rederlist = () => {
@@ -100,7 +115,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		getSongName: song => dispatch(DisplaySong(song)),
-		getUserdata: () => dispatch(getUsersAction())
+		getUserdata: () => dispatch(getUsersAction()),
+		// multpleApicalls: () => dispatch(uniqcalls())
+		getuser: id => dispatch(getUserBasedonIdAction(id))
 		//getUsersAction
 	};
 };

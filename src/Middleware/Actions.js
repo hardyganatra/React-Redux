@@ -6,6 +6,20 @@ export const DisplaySong = name => {
 	};
 };
 ////////////////////////////////////////////////////////
+// uniqcalls;
+// export const uniqcalls = () => {
+// 	return (dispatch, getState) => {
+// 		dispatch(getUsersAction());
+// 		console.log("extra", getState().ExtraReducer);
+// 	};
+// };
+
+// export const getUsersAction = () => async dispatch => {
+// 	const responce = await axios.get(
+// 		"https://jsonplaceholder.typicode.com/posts"
+// 	);
+// 	dispatch({ type: "GET_USERS", payload: responce.data });
+// };
 
 export const getUsersAction = (headers, params) => {
 	return dispatch => {
@@ -17,7 +31,7 @@ export const getUsersAction = (headers, params) => {
 		// });
 	};
 };
-//getUserBasedonIdAction
+
 export const getUserBasedonIdAction = id => {
 	return dispatch => {
 		axios
@@ -27,11 +41,13 @@ export const getUserBasedonIdAction = id => {
 			});
 		// console.log("UserBasedOnID === " ,res)
 
-		// .catch(error => {
+		// .catch(error => `{
 		// 	dispatch({ type: GET_USERS_ERROR, payload: error });
 		// });
 	};
 };
+
+//uniqcalls
 
 // export const getUserdata = (headers, params) => {
 // 	return dispatch => {
